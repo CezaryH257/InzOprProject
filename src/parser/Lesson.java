@@ -2,6 +2,7 @@ package parser;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Lesson {
 	private String subGroup;
 	private String startTime;
