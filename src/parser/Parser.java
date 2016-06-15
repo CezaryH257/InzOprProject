@@ -24,8 +24,8 @@ public class Parser {
 	
 	
 	/** Konstruktor ustawia podany jako parametr adres strony (pageAddress) i obiekt planu lekcji 
-	 * @param pageAddress  obiekt typu String zawierający adres strony 
-	 * @param timeTableRef  obiekt typu TimeTable zawierający plan zajęć w formie listy
+	 * @param pageAddress  obiekt typu String zawierajacy adres strony 
+	 * @param timeTableRef  obiekt typu TimeTable zawierajacy plan zajec w formie listy
 	 */
 	public Parser(String pageAddress , TimeTable timeTableRef){
 		this.timeTableRef = timeTableRef;
@@ -35,11 +35,11 @@ public class Parser {
 	
 	/**
 	 * Metoda odpowiedzialna za sparsowanie strony o adresie (pageAddress), podanym w konstruktorze Klasy Parser
-	 * jako argument, a następnie za wyeksportowanie sparsowanych danych do obiektu planu zajęć (TimeTable). 
-	 * Każdy parametr zajęć znajduje się w osobnym polu klasy Lesson.
+	 * jako argument, a nastepnie za wyeksportowanie sparsowanych danych do obiektu planu zajec (TimeTable). 
+	 * KaĹĽdy parametr zajec znajduje sie w osobnym polu klasy Lesson.
 	 * 
 	 * 
-	 * @throws Metoda ta rzuca wyjątek IOException
+	 * @throws Metoda ta rzuca wyjatek IOException
 	 */
 	public void parsePageSource () throws IOException{
 		String actualDayOfWeekName = null;
@@ -81,11 +81,11 @@ public class Parser {
 	}
 	
 	/**
-	 * Metoda służąca do pobrania źródła strony o podanym adresie (pageAddress) w formie Stringu z kodem HTML.
+	 * Metoda sluzaca do pobrania zrodla strony o podanym adresie (pageAddress) w formie Stringu z kodem HTML.
 	 * 
 	 * @param pageAddress - adres WWW strony internetowej
-	 * @return źródło strony w formie Stringu z kodem HTML
-	 * @throws Metoda ta może rzucić wyjątek IOException
+	 * @return zrodlo strony w formie Stringu z kodem HTML
+	 * @throws Metoda ta moze rzucic wyjatek IOException
 	 */
 	private String downloadPageSource (String pageAddress) throws IOException{
 		URL pageAddr = new URL(pageAddress);
@@ -104,17 +104,17 @@ public class Parser {
 	}
 	
 	/**
-	 * Metoda zwraca ArrayListę sparametryzowaną na String z nazwami dni tygodnia w języku polskim
-	 * @return ArrayList <String> z nazwami dni tygodnia w języku polskim
+	 * Metoda zwraca ArrayListe sparametryzowana na String z nazwami dni tygodnia w jezyku polskim
+	 * @return ArrayList <String> z nazwami dni tygodnia w jezyku polskim
 	 */
 	private ArrayList <String> getDayOfWeekNames (){
 		ArrayList <String> result = new ArrayList<>();
 		
-		result.add("Poniedziałek");
+		result.add("PoniedziaĹ‚ek");
 		result.add("Wtorek");
-		result.add("Środa");
+		result.add("Ĺšroda");
 		result.add("Czwartek");
-		result.add("Piątek");
+		result.add("PiÄ…tek");
 		result.add("Sobota");
 		result.add("Niedziela");
 		
@@ -122,12 +122,12 @@ public class Parser {
 	}
 	
 	/**
-	 * Metoda, której zadaniem jest zwrócić informację czy podany jako parametr String
-	 * jest nazwą dnia tygodnia w języku polskim 
+	 * Metoda, ktorej zadaniem jest zwrocic informacje czy podany jako parametr String
+	 * jest nazwa dnia tygodnia w jezyku polskim 
 	 * 
-	 * @param dayOfWeekName nazwa dnia tygodnia w języku polskim
+	 * @param dayOfWeekName nazwa dnia tygodnia w jezyku polskim
 	 * @return true, wtedy i tylko wtedy, gdy podany String (dayOfWeekName)
-	 * jest nazwą dnia tygodnia w języku polskim; false w przeciwnym wypadku
+	 * jest nazwa dnia tygodnia w jezyku polskim; false w przeciwnym wypadku
 	 */
 	private boolean isDayOfWeekName (String dayOfWeekName){
 		ArrayList <String> dayOfWeekNames = getDayOfWeekNames();
@@ -139,11 +139,11 @@ public class Parser {
 	
 	
 	/**
-	 * Po natknięciu się na pierwszy znak "/" (slash, separator), sczytywany jest ciąg znaków,
-	 * po nim występujący.
+	 * Po natknieciu sie na pierwszy znak "/" (slash, separator), sczytywany jest ciag znakow,
+	 * po nim wystepujacy.
 	 * 
-	 * @param dowolny ciąg znaków w formie Stringa 
-	 * @return zwracany jest String przedstawiający informacje dotyczące dat w których odbywają się zajęcia
+	 * @param dowolny ciag znakow w formie Stringa 
+	 * @return zwracany jest String przedstawiajacy informacje dotyczace dat w ktorych odbywaja sie zajecia
 	 *  (informacja pobrana z sekcji terminy i uwagi)
 	 */
 	private String getInfoAboutDueDates(String string){
@@ -159,13 +159,13 @@ public class Parser {
 	}
 	
 	/**
-	 * Funkcja wybiera daty w których odbywają się zajęcia, a następnie zwraca je w formie ArrayListy sparametryzowanej na String
+	 * Funkcja wybiera daty w ktorych odbywaja sie zajecia, a nastepnie zwraca je w formie ArrayListy sparametryzowanej na String
 	 * 
-	 * @param tdElementContainsDueDates - obiekt typu Element zawierający elementy o znacznikach <td> kodu HTML
-	 * @param lessonDayOfWeekName - nazwę dnia tygodnia w którym odbywają się dane zajęcia
-	 * @return ArrayList <String> z terminami w których odbywają się zajęcia
-	 * @throws metoda może rzucić wyjątek UnsupportedEncodingException
-	 * @throws metoda może rzucić wyjątek IOException
+	 * @param tdElementContainsDueDates - obiekt typu Element zawierajÄ…cy elementy o znacznikach <td> kodu HTML
+	 * @param lessonDayOfWeekName - nazwa dnia tygodnia w ktorym odbywaja sie dane zajecia
+	 * @return ArrayList <String> z terminami w ktorych odbywaja sie zajecia
+	 * @throws metoda moze rzucic wyjatek UnsupportedEncodingException
+	 * @throws metoda moze rzucic wyjatek IOException
 	 */
 	private ArrayList <String> getDueDates(Element tdElementContainsDueDates , String lessonDayOfWeekName) throws UnsupportedEncodingException, IOException{
 		final String DATE_PATTERN = "[0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]";
@@ -188,16 +188,16 @@ public class Parser {
 	
 	/**
 	 * Metoda ta pobiera daty z podstrony o adresie (subPageLink),
-	 * a dokładnie z tabel, które tyczą sie zajęć danego typu (classType)
-	 * o adresie subPageLink, a następnie zwraca je w postaci ArrayListy
+	 * a dokladnie z tabel, ktore tycza sie zajec danego typu (classType)
+	 * o adresie subPageLink, a nastepnie zwraca je w postaci ArrayListy
 	 * sparametryzowanej na String
 	 * 
-	 * @param subpageLink - link do podstrony z której metoda pobierze daty
-	 * @param classType - typ zajęć (np. W , L , P)
-	 * @param lessonDayOfWeekName - dzień tygodnia w którym odbywają się dane zajęcia
-	 * @return ArrayList <String> z datami w formie Stringów
-	 * @throws metoda może rzucić wyjątek UnsupportedEncodingException
-	 * @throws metoda może rzucić wyjątek IOException
+	 * @param subpageLink - link do podstrony z ktorej metoda pobierze daty
+	 * @param classType - typ zajec (np. W , L , P)
+	 * @param lessonDayOfWeekName - dzien tygodnia w ktorym odbywaja sie dane zajecia
+	 * @return ArrayList <String> z datami w formie StringĂłw
+	 * @throws metoda moze rzucic wyjatek UnsupportedEncodingException
+	 * @throws metoda moze rzucic wyjatek IOException
 	 */
 	private ArrayList <String> getDatesFromSubpage (String subpageLink , String classType , String lessonDayOfWeekName) throws UnsupportedEncodingException, IOException{
 		final String tableRegex = "\\s-\\s.*((?i)(<table.*</table>))";
@@ -253,7 +253,7 @@ public class Parser {
 	
 	/**
 	 * Metoda ta pobiera daty z podanego jako parametr Stringa (string).
-	 * Daty muszą zgadzać się ze wzorcem (wyrażeniem regularnym) (pattern).
+	 * Daty musza zgadzac sie ze wzorcem (wyrazeniem regularnym) (pattern).
 	 * 
 	 * @param string
 	 * @param pattern
@@ -287,7 +287,7 @@ public class Parser {
 	}
 
 	/**
-	 * @param metoda ta ustawia podany jako parametr (pageAddress) adres strony 
+	 * @param pageAddress metoda ta ustawia podany jako parametr (pageAddress) adres strony 
 	 */
 	public void setPageAddress(String pageAddress) {
 		this.pageAddress = pageAddress;
