@@ -2,6 +2,12 @@ package iCal;
 
 import java.util.ArrayList;
 
+/**
+ * Klasa przechowuje i zwraca liste
+ * 
+ * @author Robert Piêkny
+ *
+ */
 public class VLessons {
 	private ArrayList<VLesson> vlessons;
 
