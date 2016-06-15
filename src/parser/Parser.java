@@ -14,17 +14,33 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 
+/**
+ * @author Krzysztof Kawski
+ *
+ */
 public class Parser {
 	private TimeTable timeTableRef;
 	private String pageAddress;
 	
 	
+	/** Konstruktor ustawia podany jako parametr adres strony (pageAddress) i obiekt planu lekcji 
+	 * @param pageAddress  obiekt typu String zawierający adres strony 
+	 * @param timeTableRef  obiekt typu TimeTable zawierający plan zajęć w formie listy
+	 */
 	public Parser(String pageAddress , TimeTable timeTableRef){
 		this.timeTableRef = timeTableRef;
 		this.pageAddress = pageAddress;
 	}
 	
 	
+	/**
+	 * Metoda odpowiedzialna za sparsowanie strony o adresie (pageAddress), podanym w konstruktorze Klasy Parser
+	 * jako argument, a następnie za wyeksportowanie sparsowanych danych do obiektu planu zajęć (TimeTable). 
+	 * Każdy parametr zajęć znajduje się w osobnym polu klasy Lesson.
+	 * 
+	 * 
+	 * @throws Metoda ta rzuca wyjątek IOException
+	 */
 	public void parsePageSource () throws IOException{
 		String actualDayOfWeekName = null;
 		
@@ -64,6 +80,13 @@ public class Parser {
 		
 	}
 	
+	/**
+	 * Metoda służąca do pobrania źródła strony o podanym adresie (pageAddress) w formie Stringu z kodem HTML.
+	 * 
+	 * @param pageAddress - adres WWW strony internetowej
+	 * @return źródło strony w formie Stringu z kodem HTML
+	 * @throws Metoda ta może rzucić wyjątek IOException
+	 */
 	private String downloadPageSource (String pageAddress) throws IOException{
 		URL pageAddr = new URL(pageAddress);
 		
@@ -80,20 +103,32 @@ public class Parser {
 		return pageSrc.toString();		
 	}
 	
+	/**
+	 * Metoda zwraca ArrayListę sparametryzowaną na String z nazwami dni tygodnia w języku polskim
+	 * @return ArrayList <String> z nazwami dni tygodnia w języku polskim
+	 */
 	private ArrayList <String> getDayOfWeekNames (){
 		ArrayList <String> result = new ArrayList<>();
 		
-		result.add("Poniedzia�ek");
+		result.add("Poniedziałek");
 		result.add("Wtorek");
-		result.add("�roda");
+		result.add("Środa");
 		result.add("Czwartek");
-		result.add("Pi�tek");
+		result.add("Piątek");
 		result.add("Sobota");
 		result.add("Niedziela");
 		
 		return result;
 	}
 	
+	/**
+	 * Metoda, której zadaniem jest zwrócić informację czy podany jako parametr String
+	 * jest nazwą dnia tygodnia w języku polskim 
+	 * 
+	 * @param dayOfWeekName nazwa dnia tygodnia w języku polskim
+	 * @return true, wtedy i tylko wtedy, gdy podany String (dayOfWeekName)
+	 * jest nazwą dnia tygodnia w języku polskim; false w przeciwnym wypadku
+	 */
 	private boolean isDayOfWeekName (String dayOfWeekName){
 		ArrayList <String> dayOfWeekNames = getDayOfWeekNames();
 		
@@ -103,6 +138,14 @@ public class Parser {
 	}
 	
 	
+	/**
+	 * Po natknięciu się na pierwszy znak "/" (slash, separator), sczytywany jest ciąg znaków,
+	 * po nim występujący.
+	 * 
+	 * @param dowolny ciąg znaków w formie Stringa 
+	 * @return zwracany jest String przedstawiający informacje dotyczące dat w których odbywają się zajęcia
+	 *  (informacja pobrana z sekcji terminy i uwagi)
+	 */
 	private String getInfoAboutDueDates(String string){
 		final String SEPARATOR = "/";
 		int indexOfSeparator;
@@ -115,6 +158,15 @@ public class Parser {
 		return result;
 	}
 	
+	/**
+	 * Funkcja wybiera daty w których odbywają się zajęcia, a następnie zwraca je w formie ArrayListy sparametryzowanej na String
+	 * 
+	 * @param tdElementContainsDueDates - obiekt typu Element zawierający elementy o znacznikach <td> kodu HTML
+	 * @param lessonDayOfWeekName - nazwę dnia tygodnia w którym odbywają się dane zajęcia
+	 * @return ArrayList <String> z terminami w których odbywają się zajęcia
+	 * @throws metoda może rzucić wyjątek UnsupportedEncodingException
+	 * @throws metoda może rzucić wyjątek IOException
+	 */
 	private ArrayList <String> getDueDates(Element tdElementContainsDueDates , String lessonDayOfWeekName) throws UnsupportedEncodingException, IOException{
 		final String DATE_PATTERN = "[0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]";
 		ArrayList <String> result = null;
@@ -134,6 +186,19 @@ public class Parser {
 	}
 	
 	
+	/**
+	 * Metoda ta pobiera daty z podstrony o adresie (subPageLink),
+	 * a dokładnie z tabel, które tyczą sie zajęć danego typu (classType)
+	 * o adresie subPageLink, a następnie zwraca je w postaci ArrayListy
+	 * sparametryzowanej na String
+	 * 
+	 * @param subpageLink - link do podstrony z której metoda pobierze daty
+	 * @param classType - typ zajęć (np. W , L , P)
+	 * @param lessonDayOfWeekName - dzień tygodnia w którym odbywają się dane zajęcia
+	 * @return ArrayList <String> z datami w formie Stringów
+	 * @throws metoda może rzucić wyjątek UnsupportedEncodingException
+	 * @throws metoda może rzucić wyjątek IOException
+	 */
 	private ArrayList <String> getDatesFromSubpage (String subpageLink , String classType , String lessonDayOfWeekName) throws UnsupportedEncodingException, IOException{
 		final String tableRegex = "\\s-\\s.*((?i)(<table.*</table>))";
 		String pageContent = null;
@@ -186,6 +251,14 @@ public class Parser {
 	}
 	
 	
+	/**
+	 * Metoda ta pobiera daty z podanego jako parametr Stringa (string).
+	 * Daty muszą zgadzać się ze wzorcem (wyrażeniem regularnym) (pattern).
+	 * 
+	 * @param string
+	 * @param pattern
+	 * @return
+	 */
 	private ArrayList<String> getDatesFromString (String string , String pattern){
 		ArrayList <String> result = new ArrayList<>();
 		
@@ -206,10 +279,16 @@ public class Parser {
 			return result;
 	}
 	
+	/**
+	 * @return metoda ta zwraca adres strony
+	 */
 	public String getPageAddress() {
 		return pageAddress;
 	}
 
+	/**
+	 * @param metoda ta ustawia podany jako parametr (pageAddress) adres strony 
+	 */
 	public void setPageAddress(String pageAddress) {
 		this.pageAddress = pageAddress;
 	}
