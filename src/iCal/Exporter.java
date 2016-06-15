@@ -42,7 +42,7 @@ public class Exporter {
 	}
 	
 	public void exportEvents(String fileName) {
-		File file = new File(fileName + ".ics");
+		File file = new File(fileName);
 		try {
 			Biweekly.write(iCalendar).go(file);
 		} catch (IOException e) {
