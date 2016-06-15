@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="40.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EndPaneController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" text="Plik został wygenerowany!">
+         <font>
+            <Font size="32.0" />
+         </font></Label>
+      <Button fx:id="endButton" mnemonicParsing="false" text="Zakończ">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
+   </children>
+</VBox>
