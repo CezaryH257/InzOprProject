@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="40.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DestinationPaneController">
+   <children>
+      <Label text="Gdzie mam zapisać plik?">
+         <font>
+            <Font size="32.0" />
+         </font></Label>
+      <Label fx:id="errorLabel" text="Wybierz lokalizację dla generowanego pliku!" textFill="RED" visible="false">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Label prefHeight="47.0" prefWidth="75.0" text="Link: ">
+               <font>
+                  <Font size="32.0" />
+               </font></Label>
+            <Label fx:id="locationLabel" wrapText="true" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="32.0" />
+               </font></Label>
+            <Button fx:id="browseButton" mnemonicParsing="false" prefHeight="69.0" prefWidth="192.0" text="Przeglądaj">
+               <font>
+                  <Font size="32.0" />
+               </font></Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>
