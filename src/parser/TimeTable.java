@@ -1,7 +1,7 @@
 package parser;
 import java.util.ArrayList;
 
-/** Klasa reprezentująca plan lekcji w formie listy obiektów Lesson
+/** Klasa reprezentujaca plan lekcji w formie listy obiektow Lesson
  * @author Krzysztof Kawski
  *
  */
@@ -17,7 +17,7 @@ public class TimeTable {
 		this.lessonList = new ArrayList<>();
 	}
 
-	/** Metoda ta dodaje lekcję do listy lekcji
+	/** Metoda ta dodaje lekcje do listy lekcji
 	 * @param lesson - obiekt lekcji
 	 */
 	public void addLessonToList (Lesson lesson){
@@ -25,14 +25,14 @@ public class TimeTable {
 	}
 	
 	/** Metoda ta zwraca liste lekcji
-	 * @return lessonList - lista zawierająca lekcje
+	 * @return lessonList - lista zawierajaca lekcje
 	 */
 	public ArrayList<Lesson> getLessonList() {
 		return lessonList;
 	}
 
-	/** Metoda ta ustawia  liste zajeć na te podaną w parametrze lessonList
-	 * @param lessonList - lista z zajęciami
+	/** Metoda ta ustawia  liste zajec na te podana w parametrze lessonList
+	 * @param lessonList - lista z zajeciami
 	 */
 	public void setLessonList(ArrayList<Lesson> lessonList) {
 		this.lessonList = lessonList;
