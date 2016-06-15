@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Ta klasa reprezentuje lekcję oraz przechowuje jej parametry
+ * Ta klasa reprezentuje lekcje oraz przechowuje jej parametry
  * @author Krzysztof Kawski
  *
  */
@@ -37,72 +37,72 @@ public class Lesson {
 	}
 
 	
-	/** Metoda zwraca podgrupę
-	 * @return subGroup obiekt typu String reprezentujący podgrupę
+	/** Metoda zwraca podgrupe
+	 * @return subGroup obiekt typu String reprezentujacy podgrupe
 	 */
 	public String getSubGroup() {
 		return subGroup;
 	}
 	
-	/** Metoda ta ustawia  podgrupę na te podaną w parametrze subGroup
-	 * @param subGroup obiekt typu string zawierający podgrupę 
+	/** Metoda ta ustawia  podgrupe na te podana w parametrze subGroup
+	 * @param subGroup obiekt typu string zawierajacy podgrupe 
 	 */
 	public void setSubGroup(String subGroup) {
 		this.subGroup = subGroup;
 	}
 	
-	/** Metoda zwraca godzine rozpaczenia zajeć
+	/** Metoda zwraca godzine rozpaczenia zajec
 	 * @return startTime obiekt typu String
 	 */
 	public String getStartTime() {
 		return startTime;
 	}
 	
-	/** Metoda ta ustawia  godzinę rozpoczęcia zajeć na te podaną w parametrze startTime
-	 * @param  subGroup obiekt typu string zawierający godzinę rozpoczęcia zajęć
+	/** Metoda ta ustawia  godzine rozpoczecia zajec na te podana w parametrze startTime
+	 * @param  startTime obiekt typu string zawierajacy godzine rozpoczecia zajec
 	 */
 	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
 	
-	/** Metoda ta zwraca czas zakończenia zajęć 
+	/** Metoda ta zwraca czas zakonczenia zajec 
 	 * @return endTime obiekt typu String
 	 */
 	public String getEndTime() {
 		return endTime;
 	}
 	
-	/** Metoda ta ustawia  godzinę zakończenia zajeć na te podaną w parametrze endTime
-	 * @param endTime obiekt typu String zawierający godzinie zakończenia zajęć
+	/** Metoda ta ustawia  godzine zakonczenia zajec na te podana w parametrze endTime
+	 * @param endTime obiekt typu String zawierajacy godzinie zakonczenia zajec
 	 */
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
 	
-	/** Metoda ta zwraca typ zajęć
+	/** Metoda ta zwraca typ zajec
 	 * @return classType obiekt typu String 
 	 */
 	public String getClassType() {
 		return classType;
 	}
 
-	/** Metoda ta ustawia typ zajęć na ten podany w parametrze classType
-	 * @param classType obiekt typu String zawierający nazwę grupy
+	/** Metoda ta ustawia typ zajec na ten podany w parametrze classType
+	 * @param classType obiekt typu String zawierajacy nazwe grupy
 	 */
 	
 	public void setClassType(String classType) {
 		this.classType = classType;
 	}
 
-	/** Metoda ta zwraca nazwę  przedmiotu
+	/** Metoda ta zwraca nazwe  przedmiotu
 	 * @return subject obiekt typu String
 	 */
 	public String getSubject() {
 		return subject;
 	}
 	
-	/** Metoda ta ustawia nazwę przedmiotu na te podaną w parametrze subject
-	 * @param  subject obiekt typu String zawierający nazwę przedmiotu
+	/** Metoda ta ustawia nazwe przedmiotu na te podana w parametrze subject
+	 * @param  subject obiekt typu String zawierajacy nazwe przedmiotu
 	 */
 	public void setSubject(String subject) {
 		this.subject = subject;
@@ -115,80 +115,80 @@ public class Lesson {
 		return teacher;
 	}
 	
-	/** Metoda ta ustawia nazwisko nauczyciela na te podaną w parametrze setTeacher
-	 * @param  Obiekt typu String zawierający nazwisko nauczyciela
+	/** Metoda ta ustawia nazwisko nauczyciela na te podane w parametrze setTeacher
+	 * @param teacher Obiekt typu String zawierajacy nazwisko nauczyciela
 	 */
 	public void setTeacher(String teacher) {
 		this.teacher = teacher;
 	}
 	
-	/**Metoda ta zwraca nazwę (numer) sali
+	/**Metoda ta zwraca nazwe (numer) sali
 	 * @return  classRoom obiekt typu String
 	 */
 	public String getClassRoom() {
 		return classRoom;
 	}
 	
-	/** Metoda ta ustawia nazwę sali na te podaną w parametrze classRoom
-	 * @param classRoom obiekt typu String zawierający nazwę sali
+	/** Metoda ta ustawia nazwe sali na te podana w parametrze classRoom
+	 * @param classRoom obiekt typu String zawierajacy nazwe sali
 	 */
 	public void setClassRoom(String classRoom) {
 		this.classRoom = classRoom;
 	}
 	
-	/** Ta metoda zwraca listę dat
+	/** Ta metoda zwraca liste dat
 	 * @return dueDatesList lista typu String 
 	 */
 	public List<String> getTerm() {
 		return dueDatesList;
 	}
 	
-	/** Metoda ta ustawia listę dat na te podaną w parametrze dueDateList
-	 * @param dueDatesList lista typu String zawierająca listę dat 
+	/** Metoda ta ustawia liste dat na te podana w parametrze dueDateList
+	 * @param term lista typu String zawierajaca liste dat 
 	 */
 	public void setTerm(List<String> term) {
 		this.dueDatesList = term;
 	}
 
 	/**
-	 * @return Metoda zwraca listę terminów
+	 * @return Metoda zwraca liste terminow
 	 */
 	public List<String> getDueDate() {
 		return dueDatesList;
 	}
 
 	/**
-	 * Metoda ta ustawia daty odbycia się zajęć na te z listy podanej
+	 * Metoda ta ustawia daty odbycia sie zajec na te z listy podanej
 	 * w parametrze 
-	 * @param dueDate
+	 * @param dueDate - data odbycia
 	 */
 	public void setDueDate(List<String> dueDate) {
 		this.dueDatesList = dueDate;
 	}
 
-	/** Metoda ta zwraca dzień tygodnia
+	/** Metoda ta zwraca dzien tygodnia
 	 * @return dayOfWeek obiekt typu String 
 	 */
 	public String getDayOfWeek() {
 		return dayOfWeek;
 	}
 
-	/** Metoda ta ustawia dzień na ten podaną w parametrze DayOfWeek
-	 * @param dayOfWeek obiekt typu String zawierający dzień 
+	/** Metoda ta ustawia dzien na ten podana w parametrze DayOfWeek
+	 * @param dayOfWeek obiekt typu String zawierajacy dzien 
 	 */
 	public void setDayOfWeek(String dayOfWeek) {
 		this.dayOfWeek = dayOfWeek;
 	}
 	/**
-	 * Metoda zwraca listę z datami wykonania
-	 * @return List<String> z datami wykonania
+	 * Metoda zwraca liste z datami wykonania
+	 * @return dueDatesList z datami wykonania
 	 */
 	public List<String> getDueDatesList() {
 		return dueDatesList;
 	}
 	
 	/**
-	 * Metoda ta ustwia daty wykonania na te podane w liście
+	 * Metoda ta ustwia daty wykonania na te podane w liscie
 	 * @param dueDatesList z datami wykonania
 	 */
 	public void setDueDatesList(List<String> dueDatesList) {
@@ -202,8 +202,8 @@ public class Lesson {
 		return infoAboutDueDates;
 	}
 	
-	/** Metoda ta ustawia informacjeo dacie na te podaną w parametrze infoAboutDates
-	 * @param infoAboutDueDates obiekt typu String zawierający informacje o dacie
+	/** Metoda ta ustawia informacjeo dacie na te podana w parametrze infoAboutDates
+	 * @param infoAboutDueDates obiekt typu String zawierajacy informacje o dacie
 	 */
 	public void setInfoAboutDueDates(String infoAboutDueDates) {
 		this.infoAboutDueDates = infoAboutDueDates;
