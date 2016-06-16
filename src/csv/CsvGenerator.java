@@ -11,6 +11,10 @@ import java.util.List;
 import parser.Lesson;
 import parser.TimeTable;
 
+/**
+ * @author Krzysztof Kawski
+ */
+
 public class CsvGenerator {
 	
 	List <String> textLinesList;
@@ -21,7 +25,12 @@ public class CsvGenerator {
 		this.textLinesList = new ArrayList<>();
 	}
 
-	
+	/**
+	 * Metoda tworzy liste zawierajaca linie tekstu w formacie CSV. Na każdy 
+	 * indeks listy jedna linia tekstu.
+	 * 
+	 * @param timeTable - plan zajec zawierający pojedyncze zajecia
+	 */
 	public void createListWithTextLines(TimeTable timeTable){
 		ArrayList <Lesson> lessonList = timeTable.getLessonList();
 		ArrayList <String> textLinesList = new ArrayList<>();
@@ -60,9 +69,12 @@ public class CsvGenerator {
 		}
 		
 		this.textLinesList.addAll(textLinesList);
-		System.out.println(this.textLinesList);
 	}
-	
+	/**
+	 * Metoda generująca plik .csv w podanej w parametrze lokalizacji.
+	 * 
+	 * @param absolutePathName - lokalizacja docelowa pliku
+	 */
 	public void generateCsvFile (String absolutePathName){
 		
 		Path path = Paths.get(absolutePathName);
