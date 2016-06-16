@@ -35,7 +35,9 @@ public class DestinationPaneController implements Initializable {
 		configureButtons();
 	}
 	
-	
+	/**
+	 * Funkcja implementująca sposób zachowania przycisków.
+	 */
 	private void configureButtons(){
 		browseButton.setOnAction(new EventHandler <ActionEvent>(){
 
@@ -44,10 +46,10 @@ public class DestinationPaneController implements Initializable {
 				FileChooser fileChooser = new FileChooser();
 				String absolutePath = null;
 				TemporaryObject tempObjRef = Main.tempObjRef;
+				ExtensionFilter extType = tempObjRef.getExtType();
 				
 				fileChooser.setTitle("Wybierz folder docelowy dla pliku");
-				fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("iCalendar type", "*.ics"));
-				
+				fileChooser.getExtensionFilters().add(extType);
 				File file = fileChooser.showSaveDialog(Main.stageRef);			
 				absolutePath = file.getAbsolutePath();
 	
